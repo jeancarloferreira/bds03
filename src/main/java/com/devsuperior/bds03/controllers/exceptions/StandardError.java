@@ -1,4 +1,4 @@
-package com.project1.dscatalog.resources.exceptions;
+package com.devsuperior.bds03.controllers.exceptions;
 
 import java.io.Serializable;
 import java.time.Instant;

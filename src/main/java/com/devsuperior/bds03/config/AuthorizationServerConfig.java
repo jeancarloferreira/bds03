@@ -1,6 +1,5 @@
-package com.project1.dscatalog.config;
+package com.devsuperior.bds03.config;
 
-import com.project1.dscatalog.components.JwtTokenEnhancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -42,10 +41,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private JwtTokenEnhancer tokenEnhancer;
-
-
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
@@ -64,11 +59,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         TokenEnhancerChain chain = new TokenEnhancerChain();
-        chain.setTokenEnhancers(Arrays.asList(accessTokenConverter, tokenEnhancer));
 
         endpoints.authenticationManager(authenticationManager)
                 .tokenStore(tokenStore)
-                .accessTokenConverter(accessTokenConverter)
-                .tokenEnhancer(chain);
+                .accessTokenConverter(accessTokenConverter);
     }
 }

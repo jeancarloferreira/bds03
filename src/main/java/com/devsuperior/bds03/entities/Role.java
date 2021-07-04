@@ -1,4 +1,4 @@
-package com.project1.dscatalog.entities;
+package com.devsuperior.bds03.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
